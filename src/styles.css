@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+.nav li  a.active-link{
+    background: #5c5252;
+    border-radius: 4px;
+    transition-delay:0.2s ;
+}
+.card {border: 0;}

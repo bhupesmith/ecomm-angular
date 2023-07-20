@@ -1,0 +1,57 @@
+<div class="d-flex justify-content-center">
+    <div class="card col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
+        <h5 class="card-header">Customer Support Form</h5>
+        <div class="card-body">
+            <form (ngSubmit)="validate()" #f="ngForm" novalidate>
+                <div class="py-md-3 pl-md-5">
+                    <input type="text" #fullname="ngModel" class="form-control" name="fullname"
+                        [(ngModel)]="support.fullname" placeholder="Full Name" required minlength="6"
+                        [ngClass]="{ 'is-invalid': (fullname.touched || f.submitted) && fullname.errors }" />
+                    
+                        <div *ngIf="(fullname.touched|| f.submitted) && fullname.errors" class="invalid-feedback">
+                            <div *ngIf="fullname.errors['required']">
+                                Full Name is required and must be a valid name
+                            </div>
+                            <div *ngIf="fullname.errors['minlength']">
+                                Minimum 6 characters are required
+                            </div>
+                        </div>
+                </div>
+                <div class="py-md-3 pl-md-5">
+                    <input type="text" placeholder="Email" name="email" class="form-control" [(ngModel)]="support.email"
+                    #email="ngModel" required email [ngClass]="{ 'is-invalid': (email.touched||f.submitted) && email.errors }">
+                <div *ngIf="(email.touched || f.submitted) && email.errors" class="invalid-feedback">
+                    <div *ngIf="email.errors['required']">
+                        Email is required
+                    </div>
+                    <div *ngIf="email.errors['email']">
+                        Enter a valid email address, e.g., john@example.com
+                    </div>
+                </div>
+
+                </div>
+                <div class="py-md-3 pl-md-5">
+                    <textarea #description="ngModel" class="form-control" name="description"
+                        [(ngModel)]="support.description" placeholder="Description" required minlength="20" maxlength="200"
+                        [ngClass]="{ 'is-invalid': (description.touched||f.submitted) && description.errors }" ></textarea>
+                    <div *ngIf="(description.touched||f.submitted) && description.errors" 
+                        class="invalid-feedback">
+                        <div *ngIf="description.errors['required']">
+                            Description is required
+                        </div>
+                        <div *ngIf="description.errors['minlength']">
+                            Minimum 20 characters are required
+                        </div>
+                        <div *ngIf="description.errors['maxlength']">
+                            200 Character Limit exceded
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="mb-6">
+                    <input [disabled]="f.invalid" type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+    <div class="card col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content">
+        <h5 class="card-header">Admin Support Form</h5>
+        <div class="card-body">
+            <form (ngSubmit)="supportSubmit()" [formGroup]="supportForm">
+                <div class="py-md-3 pl-md-5">
+                    <input type="text" formControlName="fullname" class="form-control" name="fullname"
+                        [(ngModel)]="support.fullname" placeholder="Full Name"
+                        [class.is-invalid]="f['fullname'].invalid && (f['fullname'].dirty || f['fullname'].touched)" />
+                    <div *ngIf="f['fullname'].invalid && (f['fullname'].dirty || f['fullname'].touched)" class="invalid-feedback">
+                        <div *ngIf="f['fullname'].errors?.['required']">
+                            Full Name is required and must be a valid name
+                        </div>
+                        <div *ngIf="f['fullname'].errors?.['minlength']">
+                            Minimum 6 characters are required
+                        </div>
+                    </div>
+
+                </div>
+                <div class="py-md-3 pl-md-5">
+                    <input type="text" formControlName="email" class="form-control" name="email"
+                        [(ngModel)]="support.email" placeholder="Email"
+                        [class.is-invalid]="f['email'].invalid && (f['email'].dirty || f['email'].touched)" />
+                    <div *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="f['email'].errors?.['required']">
+                            Email is required
+                        </div>
+                        <div
+                            *ngIf="f['email'].errors?.['email']">
+                            Enter a valid email address, e.g., john@example.com
+                        </div>
+                    </div>
+
+                </div>
+                <div class="py-md-3 pl-md-5">
+                    <textarea formControlName="description" class="form-control" name="description"
+                        [(ngModel)]="support.description" placeholder="Description"
+                        [class.is-invalid]="f['description'].invalid && (f['description'].dirty || f['description'].touched)" ></textarea>
+                    <div *ngIf="f['description'].invalid && (f['description'].dirty || f['description'].touched)"
+                        class="invalid-feedback">
+                        <div *ngIf="f['description'].errors?.['required']">
+                            Description is required
+                        </div>
+                        <div *ngIf="f['description'].errors?.['minlength']">
+                            Minimum 20 characters are required
+                        </div>
+                        <div *ngIf="f['description'].errors?.['maxlength']">
+                            200 Character Limit exceded
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="mb-6">
+                    <input type="submit" value="Register" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

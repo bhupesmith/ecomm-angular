@@ -1,0 +1,67 @@
+<section>
+    <div class="container my-5">
+        <header class="mb-4">
+            <h3>Products</h3>
+        </header>
+
+        <div class="row">
+            <div *ngFor="let prod of products" class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card my-2 shadow-0">
+                    <a routerLink="/product-detail/{{prod.id}}"  class="">
+                        <div class="mask" style="height: 50px;">
+                            <div class="d-flex justify-content-start align-items-start h-100 m-2">
+                                <h6><span class="badge bg-danger pt-1">New</span></h6>
+                            </div>
+                        </div>
+                        <img src="{{prod.image}}" class="card-img-top rounded-2" style="aspect-ratio: 1 / 1" />
+                    </a>
+                    <div class="card-body p-0 pt-3">
+                        <h5 class="card-title">{{prod.price| currency}}</h5>
+                        <p class="card-text mb-0">{{prod.name}}</p>
+                        <p class="text-muted">
+                            Brand: {{prod.brand | uppercase}}
+                        </p>
+                        <a routerLink="/product-detail/{{prod.id}}" class="btn btn-light border px-2 pt-2  icon-hover">
+                            <i class="bi bi-info-circle-fill">View detail</i>
+                        </a>
+                        <a href="javascript:void(0)" class="btn btn-light border px-2 pt-2 float-end icon-hover">
+                            <i class="bi bi-cart-plus-fill"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prod of products">
+            <td>{{prod.name}}</td>
+            <td>{{prod.price}}</td>
+            <td><a routerLink="/product-detail/{{prod.id}}" class="btn btn-primary">View Detail</a></td>
+        </tr>
+    </tbody>
+</table> -->
+<section>
+    <div class="container">
+      <div class="card p-4 bg-primary">
+        <div class="row align-items-center">
+          <div class="col">
+            <h4 class="mb-0 text-white">Best products and brands in store</h4>
+            <p class="mb-0 text-white-50">Trendy products and text to build on the card title</p>
+          </div>
+          <div class="col-auto"><a class="btn btn-white text-primary shadow-0" href="#">Discover</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
